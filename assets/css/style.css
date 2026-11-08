@@ -370,3 +370,198 @@ main{
   -webkit-backdrop-filter:blur(1.2px);
   backdrop-filter:blur(1.2px);
 }
+
+/* ===== Left navigation rail + continuous marquee — Nov 8 ===== */
+:root{
+  --stage-h:214px;
+  --footer-h:42px;
+  --rail-w:82px;
+  --shell-gap:10px;
+  --accent-pink:#d33c7c;
+}
+
+/* Header now ends with the logo. The pink glitter begins immediately below it. */
+.stage-header{
+  height:var(--stage-h)!important;
+  min-height:var(--stage-h)!important;
+  overflow:hidden!important;
+}
+.stage-header .stage-curtain{height:100%!important}
+.stage-header .brand,
+.stage-header .stage-overlay .brand{
+  position:absolute!important;
+  z-index:12!important;
+  left:50%!important;
+  bottom:2px!important;
+  transform:translateX(-50%)!important;
+  width:min(350px,44vw)!important;
+  margin:0!important;
+}
+.stage-header .brand img,
+.stage-header .stage-overlay .brand img{
+  width:100%!important;
+  height:45px!important;
+  object-fit:contain!important;
+  object-position:center!important;
+}
+
+/* The actual nav is visually moved into a white rail beside the scrolling content. */
+.stage-header nav,
+.stage-header .stage-overlay nav{
+  position:fixed!important;
+  z-index:50!important;
+  left:10px!important;
+  top:calc(var(--stage-h) + var(--shell-gap))!important;
+  bottom:calc(var(--footer-h) + var(--shell-gap))!important;
+  width:var(--rail-w)!important;
+  height:auto!important;
+  transform:none!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:center!important;
+  align-items:stretch!important;
+  gap:8px!important;
+  margin:0!important;
+  padding:10px 7px!important;
+  overflow:visible!important;
+  background:rgba(255,255,255,.955)!important;
+  border:1.5px solid var(--accent-pink)!important;
+  border-radius:15px!important;
+  box-shadow:0 7px 24px rgba(82,42,64,.13)!important;
+  -webkit-backdrop-filter:blur(2px);
+  backdrop-filter:blur(2px);
+  pointer-events:auto!important;
+}
+.stage-header nav a,
+.stage-header .stage-overlay nav a{
+  min-width:0!important;
+  width:100%!important;
+  padding:7px 2px!important;
+  margin:0!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:2px!important;
+  color:#514a51!important;
+  background:transparent!important;
+  border-radius:9px!important;
+  font-size:.47rem!important;
+  font-weight:800!important;
+  line-height:1.05!important;
+  letter-spacing:.055em!important;
+  text-transform:uppercase!important;
+  text-decoration:none!important;
+  text-shadow:none!important;
+}
+.stage-header nav a:hover,
+.stage-header .stage-overlay nav a:hover{background:#faeaf2!important;color:#b32968!important}
+.stage-header nav a::before,
+.stage-header .stage-overlay nav a::before{font-size:1rem!important;line-height:1!important;margin:0 0 1px!important}
+
+/* Only the white content card scrolls. Glitter remains visible around rail + card. */
+main{
+  flex:1 1 auto!important;
+  min-height:0!important;
+  width:auto!important;
+  margin:var(--shell-gap) 12px var(--shell-gap) calc(10px + var(--rail-w) + var(--shell-gap))!important;
+  border-radius:17px!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+}
+
+/* Tighter footer so the middle workspace gets more height. */
+footer{
+  flex:0 0 var(--footer-h)!important;
+  min-height:var(--footer-h)!important;
+  height:var(--footer-h)!important;
+  padding:3px 10px!important;
+  gap:8px!important;
+  font-size:.60rem!important;
+  line-height:1.05!important;
+  overflow:hidden!important;
+}
+footer p{margin:0!important}
+footer .socials{gap:4px!important}
+footer .socials a{padding:3px 6px!important;font-size:.58rem!important}
+footer .fine{font-size:.57rem!important}
+
+/* Seamless endless leftward marquee. JS turns the originals into two identical sets. */
+.stage-header .lineup-track{
+  position:absolute!important;
+  inset:0 auto auto 0!important;
+  height:100%!important;
+  width:max-content!important;
+  min-width:0!important;
+  display:flex!important;
+  align-items:stretch!important;
+  justify-content:flex-start!important;
+  gap:0!important;
+  padding:0!important;
+  margin:0!important;
+  animation:christina-marquee 72s linear infinite!important;
+  will-change:transform;
+}
+.stage-header .lineup-set{
+  flex:0 0 auto;
+  height:100%;
+  display:flex;
+  align-items:flex-end;
+  justify-content:flex-start;
+  gap:18px;
+  padding:8px 18px 51px 18px;
+}
+.stage-header .lineup-person-img{
+  flex:0 0 auto!important;
+  display:block!important;
+  height:156px!important;
+  width:auto!important;
+  max-width:none!important;
+  margin:0!important;
+  object-fit:contain!important;
+  object-position:center bottom!important;
+}
+.stage-header .lineup-person-img[src$="christina-09.png"]{
+  transform:scale(.90)!important;
+  transform-origin:center bottom!important;
+}
+@keyframes christina-marquee{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+.stage-header .lineup-track:hover{animation-play-state:running!important}
+
+/* stage-overlay only needs to keep the logo visible; nav is fixed independently. */
+.stage-header .stage-overlay{
+  position:static!important;
+  width:0!important;
+  height:0!important;
+  pointer-events:none!important;
+}
+.stage-header .stage-overlay .brand{pointer-events:auto!important}
+
+@media(max-width:900px){
+  :root{--stage-h:194px;--footer-h:40px;--rail-w:70px;--shell-gap:8px}
+  .stage-header .lineup-track{animation:christina-marquee 68s linear infinite!important}
+  .stage-header .lineup-set{gap:14px;padding:7px 14px 48px 14px}
+  .stage-header .lineup-person-img{height:139px!important}
+  .stage-header .brand,.stage-header .stage-overlay .brand{width:min(320px,58vw)!important}
+  .stage-header .brand img,.stage-header .stage-overlay .brand img{height:41px!important}
+  .stage-header nav,.stage-header .stage-overlay nav{left:8px!important;padding:8px 5px!important;gap:5px!important;border-radius:12px!important}
+  .stage-header nav a,.stage-header .stage-overlay nav a{font-size:.43rem!important;padding:6px 1px!important}
+  main{margin-left:calc(8px + var(--rail-w) + var(--shell-gap))!important;margin-right:8px!important}
+  footer>p:first-of-type{display:none!important}
+}
+@media(max-width:600px){
+  :root{--stage-h:178px;--footer-h:38px;--rail-w:62px;--shell-gap:6px}
+  .stage-header .lineup-track{animation:christina-marquee 62s linear infinite!important}
+  .stage-header .lineup-set{gap:11px;padding:6px 11px 44px 11px}
+  .stage-header .lineup-person-img{height:126px!important}
+  .stage-header .brand,.stage-header .stage-overlay .brand{width:68vw!important}
+  .stage-header .brand img,.stage-header .stage-overlay .brand img{height:38px!important}
+  .stage-header nav,.stage-header .stage-overlay nav{left:6px!important;padding:6px 4px!important;gap:3px!important}
+  .stage-header nav a,.stage-header .stage-overlay nav a{font-size:.39rem!important;padding:5px 0!important;letter-spacing:.02em!important}
+  main{margin-left:calc(6px + var(--rail-w) + var(--shell-gap))!important;margin-right:6px!important}
+  footer .socials a{font-size:.53rem!important;padding:2px 4px!important}
+  footer .fine{font-size:.52rem!important}
+}
