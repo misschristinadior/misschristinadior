@@ -327,3 +327,268 @@ background-repeat:no-repeat,no-repeat,repeat-x}
   .stage-header .stage-overlay nav a{font-size:.42rem!important;letter-spacing:.03em!important;min-width:42px!important}
   .stage-header .stage-curtain::before,.stage-header .stage-curtain::after{width:125px}
 }
+
+/* ===== Header spacing + motion correction — Nov 8 ===== */
+.stage-header{
+  height:250px!important;
+  min-height:250px!important;
+}
+.stage-header .lineup-track{
+  gap:18px!important;
+  padding:10px 32px 62px!important;
+  animation:christina-lineup-drift 80s linear infinite alternate!important;
+}
+.stage-header .lineup-person-img{
+  height:176px!important;
+}
+.stage-header .stage-overlay{
+  bottom:5px!important;
+}
+@media(max-width:900px){
+  .stage-header{height:225px!important;min-height:225px!important}
+  .stage-header .lineup-track{gap:14px!important;padding:8px 18px 56px!important;animation:christina-lineup-drift 72s linear infinite alternate!important}
+  .stage-header .lineup-person-img{height:156px!important}
+}
+@media(max-width:600px){
+  .stage-header{height:205px!important;min-height:205px!important}
+  .stage-header .lineup-track{gap:11px!important;padding:7px 12px 51px!important;animation:christina-lineup-drift 66s linear infinite alternate!important}
+  .stage-header .lineup-person-img{height:142px!important}
+}
+
+/* ===== Pink glitter content background — Nov 8 ===== */
+body{
+  background-color:#f7dbe7!important;
+  background-image:url('../img/glitter.jpg')!important;
+  background-repeat:repeat!important;
+  background-position:top left!important;
+  background-size:600px 600px!important;
+}
+main{
+  background:rgba(255,255,255,.95)!important;
+  border:1.5px solid #d33c7c!important;
+  box-shadow:0 9px 32px rgba(82,42,64,.16)!important;
+  -webkit-backdrop-filter:blur(1.2px);
+  backdrop-filter:blur(1.2px);
+}
+
+/* ===== Left navigation rail + continuous marquee — Nov 8 ===== */
+:root{
+  --stage-h:214px;
+  --footer-h:42px;
+  --rail-w:82px;
+  --shell-gap:10px;
+  --accent-pink:#d33c7c;
+}
+
+/* Header now ends with the logo. The pink glitter begins immediately below it. */
+.stage-header{
+  height:var(--stage-h)!important;
+  min-height:var(--stage-h)!important;
+  overflow:hidden!important;
+}
+.stage-header .stage-curtain{height:100%!important}
+.stage-header .brand,
+.stage-header .stage-overlay .brand{
+  position:absolute!important;
+  z-index:12!important;
+  left:50%!important;
+  bottom:2px!important;
+  transform:translateX(-50%)!important;
+  width:min(350px,44vw)!important;
+  margin:0!important;
+}
+.stage-header .brand img,
+.stage-header .stage-overlay .brand img{
+  width:100%!important;
+  height:45px!important;
+  object-fit:contain!important;
+  object-position:center!important;
+}
+
+/* The actual nav is visually moved into a white rail beside the scrolling content. */
+.stage-header nav,
+.stage-header .stage-overlay nav{
+  position:fixed!important;
+  z-index:50!important;
+  left:10px!important;
+  top:calc(var(--stage-h) + var(--shell-gap))!important;
+  bottom:calc(var(--footer-h) + var(--shell-gap))!important;
+  width:var(--rail-w)!important;
+  height:auto!important;
+  transform:none!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:center!important;
+  align-items:stretch!important;
+  gap:8px!important;
+  margin:0!important;
+  padding:10px 7px!important;
+  overflow:visible!important;
+  background:rgba(255,255,255,.955)!important;
+  border:1.5px solid var(--accent-pink)!important;
+  border-radius:15px!important;
+  box-shadow:0 7px 24px rgba(82,42,64,.13)!important;
+  -webkit-backdrop-filter:blur(2px);
+  backdrop-filter:blur(2px);
+  pointer-events:auto!important;
+}
+.stage-header nav a,
+.stage-header .stage-overlay nav a{
+  min-width:0!important;
+  width:100%!important;
+  padding:7px 2px!important;
+  margin:0!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:2px!important;
+  color:#514a51!important;
+  background:transparent!important;
+  border-radius:9px!important;
+  font-size:.47rem!important;
+  font-weight:800!important;
+  line-height:1.05!important;
+  letter-spacing:.055em!important;
+  text-transform:uppercase!important;
+  text-decoration:none!important;
+  text-shadow:none!important;
+}
+.stage-header nav a:hover,
+.stage-header .stage-overlay nav a:hover{background:#faeaf2!important;color:#b32968!important}
+.stage-header nav a::before,
+.stage-header .stage-overlay nav a::before{font-size:1rem!important;line-height:1!important;margin:0 0 1px!important}
+
+/* Only the white content card scrolls. Glitter remains visible around rail + card. */
+main{
+  flex:1 1 auto!important;
+  min-height:0!important;
+  width:auto!important;
+  margin:var(--shell-gap) 12px var(--shell-gap) calc(10px + var(--rail-w) + var(--shell-gap))!important;
+  border-radius:17px!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+}
+
+/* Tighter footer so the middle workspace gets more height. */
+footer{
+  flex:0 0 var(--footer-h)!important;
+  min-height:var(--footer-h)!important;
+  height:var(--footer-h)!important;
+  padding:3px 10px!important;
+  gap:8px!important;
+  font-size:.60rem!important;
+  line-height:1.05!important;
+  overflow:hidden!important;
+}
+footer p{margin:0!important}
+footer .socials{gap:4px!important}
+footer .socials a{padding:3px 6px!important;font-size:.58rem!important}
+footer .fine{font-size:.57rem!important}
+
+/* Seamless endless leftward marquee. JS turns the originals into two identical sets. */
+.stage-header .lineup-track{
+  position:absolute!important;
+  inset:0 auto auto 0!important;
+  height:100%!important;
+  width:max-content!important;
+  min-width:0!important;
+  display:flex!important;
+  align-items:stretch!important;
+  justify-content:flex-start!important;
+  gap:0!important;
+  padding:0!important;
+  margin:0!important;
+  animation:christina-marquee 72s linear infinite!important;
+  will-change:transform;
+}
+.stage-header .lineup-set{
+  flex:0 0 auto;
+  height:100%;
+  display:flex;
+  align-items:flex-end;
+  justify-content:flex-start;
+  gap:18px;
+  padding:8px 18px 51px 18px;
+}
+.stage-header .lineup-person-img{
+  flex:0 0 auto!important;
+  display:block!important;
+  height:156px!important;
+  width:auto!important;
+  max-width:none!important;
+  margin:0!important;
+  object-fit:contain!important;
+  object-position:center bottom!important;
+}
+.stage-header .lineup-person-img[src$="christina-09.png"]{
+  transform:scale(.90)!important;
+  transform-origin:center bottom!important;
+}
+@keyframes christina-marquee{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+.stage-header .lineup-track:hover{animation-play-state:running!important}
+
+/* stage-overlay only needs to keep the logo visible; nav is fixed independently. */
+.stage-header .stage-overlay{
+  position:static!important;
+  width:0!important;
+  height:0!important;
+  pointer-events:none!important;
+}
+.stage-header .stage-overlay .brand{pointer-events:auto!important}
+
+@media(max-width:900px){
+  :root{--stage-h:194px;--footer-h:40px;--rail-w:70px;--shell-gap:8px}
+  .stage-header .lineup-track{animation:christina-marquee 68s linear infinite!important}
+  .stage-header .lineup-set{gap:14px;padding:7px 14px 48px 14px}
+  .stage-header .lineup-person-img{height:139px!important}
+  .stage-header .brand,.stage-header .stage-overlay .brand{width:min(320px,58vw)!important}
+  .stage-header .brand img,.stage-header .stage-overlay .brand img{height:41px!important}
+  .stage-header nav,.stage-header .stage-overlay nav{left:8px!important;padding:8px 5px!important;gap:5px!important;border-radius:12px!important}
+  .stage-header nav a,.stage-header .stage-overlay nav a{font-size:.43rem!important;padding:6px 1px!important}
+  main{margin-left:calc(8px + var(--rail-w) + var(--shell-gap))!important;margin-right:8px!important}
+  footer>p:first-of-type{display:none!important}
+}
+@media(max-width:600px){
+  :root{--stage-h:178px;--footer-h:38px;--rail-w:62px;--shell-gap:6px}
+  .stage-header .lineup-track{animation:christina-marquee 62s linear infinite!important}
+  .stage-header .lineup-set{gap:11px;padding:6px 11px 44px 11px}
+  .stage-header .lineup-person-img{height:126px!important}
+  .stage-header .brand,.stage-header .stage-overlay .brand{width:68vw!important}
+  .stage-header .brand img,.stage-header .stage-overlay .brand img{height:38px!important}
+  .stage-header nav,.stage-header .stage-overlay nav{left:6px!important;padding:6px 4px!important;gap:3px!important}
+  .stage-header nav a,.stage-header .stage-overlay nav a{font-size:.39rem!important;padding:5px 0!important;letter-spacing:.02em!important}
+  main{margin-left:calc(6px + var(--rail-w) + var(--shell-gap))!important;margin-right:6px!important}
+  footer .socials a{font-size:.53rem!important;padding:2px 4px!important}
+  footer .fine{font-size:.52rem!important}
+}
+
+/* ===== Structural sidebar correction + seamless marquee — final Nov 8 pass ===== */
+:root{--stage-h:214px;--footer-h:34px;--rail-w:86px;--shell-gap:10px;--accent-pink:#d33c7c}
+body{display:flex!important;flex-direction:column!important;height:100vh!important;min-height:100vh!important;overflow:hidden!important}
+.stage-header{flex:0 0 var(--stage-h)!important;height:var(--stage-h)!important;min-height:var(--stage-h)!important;position:relative!important;overflow:hidden!important}
+.stage-header .stage-curtain{position:absolute!important;inset:0!important;height:100%!important;overflow:hidden!important}
+.stage-header .brand,.stage-header .stage-overlay .brand{position:absolute!important;z-index:12!important;left:50%!important;bottom:2px!important;transform:translateX(-50%)!important;width:min(350px,44vw)!important;margin:0!important}
+.stage-header .brand img,.stage-header .stage-overlay .brand img{width:100%!important;height:45px!important;object-fit:contain!important;object-position:center!important}
+.stage-header .stage-overlay{position:static!important;width:0!important;height:0!important;pointer-events:none!important}
+.stage-header .stage-overlay .brand{pointer-events:auto!important}
+.stage-header nav,.stage-header .stage-overlay nav{display:none!important}
+.side-nav{position:fixed!important;z-index:60!important;left:10px!important;top:calc(var(--stage-h) + var(--shell-gap))!important;bottom:calc(var(--footer-h) + var(--shell-gap))!important;width:var(--rail-w)!important;display:flex!important;flex-direction:column!important;justify-content:center!important;align-items:stretch!important;gap:8px!important;padding:10px 7px!important;background:rgba(255,255,255,.955)!important;border:1.5px solid var(--accent-pink)!important;border-radius:15px!important;box-shadow:0 7px 24px rgba(82,42,64,.13)!important;-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px)}
+.side-nav a{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:2px!important;width:100%!important;padding:7px 2px!important;color:#514a51!important;text-decoration:none!important;text-transform:uppercase!important;letter-spacing:.055em!important;font-size:.47rem!important;font-weight:800!important;line-height:1.05!important;border-radius:9px!important}
+.side-nav a:hover{background:#faeaf2!important;color:#b32968!important}
+.side-nav a::before{font-size:1rem!important;line-height:1!important;margin-bottom:1px!important}
+.side-nav a:nth-child(1)::before{content:"🏠"}.side-nav a:nth-child(2)::before{content:"📖"}.side-nav a:nth-child(3)::before{content:"🎭"}.side-nav a:nth-child(4)::before{content:"🎵"}.side-nav a:nth-child(5)::before{content:"🎬"}.side-nav a:nth-child(6)::before{content:"📸"}
+main{flex:1 1 auto!important;min-height:0!important;width:auto!important;margin:var(--shell-gap) 12px var(--shell-gap) calc(10px + var(--rail-w) + var(--shell-gap))!important;border-radius:17px!important;overflow-y:auto!important;overflow-x:hidden!important;background:rgba(255,255,255,.95)!important;border:1.5px solid var(--accent-pink)!important}
+footer{flex:0 0 var(--footer-h)!important;height:var(--footer-h)!important;min-height:var(--footer-h)!important;padding:2px 8px!important;gap:7px!important;font-size:.58rem!important;line-height:1!important;overflow:hidden!important}
+footer p{margin:0!important}footer .socials{gap:3px!important}footer .socials a{padding:2px 5px!important;font-size:.56rem!important}footer .fine{font-size:.55rem!important}
+.stage-header .lineup-track{position:absolute!important;inset:0 auto auto 0!important;height:100%!important;width:max-content!important;min-width:0!important;display:flex!important;align-items:stretch!important;justify-content:flex-start!important;gap:0!important;padding:0!important;margin:0!important;animation:christina-marquee 72s linear infinite!important;will-change:transform}
+.stage-header .lineup-set{flex:0 0 auto;height:100%;display:flex;align-items:flex-end;justify-content:flex-start;gap:18px;padding:8px 18px 51px}
+.stage-header .lineup-person-img{flex:0 0 auto!important;height:156px!important;width:auto!important;max-width:none!important;margin:0!important;object-fit:contain!important;object-position:center bottom!important}
+.stage-header .lineup-person-img[src$="christina-09.png"]{transform:scale(.90)!important;transform-origin:center bottom!important}
+@keyframes christina-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.stage-header .lineup-track:hover{animation-play-state:running!important}
+@media(max-width:900px){:root{--stage-h:194px;--footer-h:32px;--rail-w:72px;--shell-gap:8px}.stage-header .lineup-track{animation:christina-marquee 68s linear infinite!important}.stage-header .lineup-set{gap:14px;padding:7px 14px 48px}.stage-header .lineup-person-img{height:139px!important}.stage-header .brand,.stage-header .stage-overlay .brand{width:min(320px,58vw)!important}.stage-header .brand img,.stage-header .stage-overlay .brand img{height:41px!important}.side-nav{left:8px!important;padding:8px 5px!important;gap:5px!important;border-radius:12px!important}.side-nav a{font-size:.43rem!important;padding:6px 1px!important}main{margin-left:calc(8px + var(--rail-w) + var(--shell-gap))!important;margin-right:8px!important}footer>p:first-of-type{display:none!important}}
+@media(max-width:600px){:root{--stage-h:178px;--footer-h:30px;--rail-w:64px;--shell-gap:6px}.stage-header .lineup-track{animation:christina-marquee 62s linear infinite!important}.stage-header .lineup-set{gap:11px;padding:6px 11px 44px}.stage-header .lineup-person-img{height:126px!important}.stage-header .brand,.stage-header .stage-overlay .brand{width:68vw!important}.stage-header .brand img,.stage-header .stage-overlay .brand img{height:38px!important}.side-nav{left:6px!important;padding:6px 4px!important;gap:3px!important}.side-nav a{font-size:.39rem!important;padding:5px 0!important;letter-spacing:.02em!important}main{margin-left:calc(6px + var(--rail-w) + var(--shell-gap))!important;margin-right:6px!important}footer .socials a{font-size:.51rem!important;padding:2px 3px!important}footer .fine{font-size:.50rem!important}}
