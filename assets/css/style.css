@@ -327,3 +327,30 @@ background-repeat:no-repeat,no-repeat,repeat-x}
   .stage-header .stage-overlay nav a{font-size:.42rem!important;letter-spacing:.03em!important;min-width:42px!important}
   .stage-header .stage-curtain::before,.stage-header .stage-curtain::after{width:125px}
 }
+
+/* ===== Header spacing + motion correction — Nov 8 ===== */
+.stage-header{
+  height:250px!important;
+  min-height:250px!important;
+}
+.stage-header .lineup-track{
+  gap:18px!important;
+  padding:10px 32px 62px!important;
+  animation:christina-lineup-drift 80s linear infinite alternate!important;
+}
+.stage-header .lineup-person-img{
+  height:176px!important;
+}
+.stage-header .stage-overlay{
+  bottom:5px!important;
+}
+@media(max-width:900px){
+  .stage-header{height:225px!important;min-height:225px!important}
+  .stage-header .lineup-track{gap:14px!important;padding:8px 18px 56px!important;animation:christina-lineup-drift 72s linear infinite alternate!important}
+  .stage-header .lineup-person-img{height:156px!important}
+}
+@media(max-width:600px){
+  .stage-header{height:205px!important;min-height:205px!important}
+  .stage-header .lineup-track{gap:11px!important;padding:7px 12px 51px!important;animation:christina-lineup-drift 66s linear infinite alternate!important}
+  .stage-header .lineup-person-img{height:142px!important}
+}
