@@ -354,3 +354,19 @@ background-repeat:no-repeat,no-repeat,repeat-x}
   .stage-header .lineup-track{gap:11px!important;padding:7px 12px 51px!important;animation:christina-lineup-drift 66s linear infinite alternate!important}
   .stage-header .lineup-person-img{height:142px!important}
 }
+
+/* ===== Pink glitter content background — Nov 8 ===== */
+body{
+  background-color:#f7dbe7!important;
+  background-image:url('../img/glitter.jpg')!important;
+  background-repeat:repeat!important;
+  background-position:top left!important;
+  background-size:600px 600px!important;
+}
+main{
+  background:rgba(255,255,255,.95)!important;
+  border:1.5px solid #d33c7c!important;
+  box-shadow:0 9px 32px rgba(82,42,64,.16)!important;
+  -webkit-backdrop-filter:blur(1.2px);
+  backdrop-filter:blur(1.2px);
+}
