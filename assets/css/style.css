@@ -592,3 +592,61 @@ footer p{margin:0!important}footer .socials{gap:3px!important}footer .socials a{
 .stage-header .lineup-track:hover{animation-play-state:running!important}
 @media(max-width:900px){:root{--stage-h:194px;--footer-h:32px;--rail-w:72px;--shell-gap:8px}.stage-header .lineup-track{animation:christina-marquee 68s linear infinite!important}.stage-header .lineup-set{gap:14px;padding:7px 14px 48px}.stage-header .lineup-person-img{height:139px!important}.stage-header .brand,.stage-header .stage-overlay .brand{width:min(320px,58vw)!important}.stage-header .brand img,.stage-header .stage-overlay .brand img{height:41px!important}.side-nav{left:8px!important;padding:8px 5px!important;gap:5px!important;border-radius:12px!important}.side-nav a{font-size:.43rem!important;padding:6px 1px!important}main{margin-left:calc(8px + var(--rail-w) + var(--shell-gap))!important;margin-right:8px!important}footer>p:first-of-type{display:none!important}}
 @media(max-width:600px){:root{--stage-h:178px;--footer-h:30px;--rail-w:64px;--shell-gap:6px}.stage-header .lineup-track{animation:christina-marquee 62s linear infinite!important}.stage-header .lineup-set{gap:11px;padding:6px 11px 44px}.stage-header .lineup-person-img{height:126px!important}.stage-header .brand,.stage-header .stage-overlay .brand{width:68vw!important}.stage-header .brand img,.stage-header .stage-overlay .brand img{height:38px!important}.side-nav{left:6px!important;padding:6px 4px!important;gap:3px!important}.side-nav a{font-size:.39rem!important;padding:5px 0!important;letter-spacing:.02em!important}main{margin-left:calc(6px + var(--rail-w) + var(--shell-gap))!important;margin-right:6px!important}footer .socials a{font-size:.51rem!important;padding:2px 3px!important}footer .fine{font-size:.50rem!important}}
+
+
+/* ===== V1.01 rolling lineup loader — Nov 10 =====
+   Images are injected/recycled by site.js so only the visible run plus
+   a small look-ahead buffer is fetched instead of the full archive. */
+.stage-header .lineup-track{
+  animation:none!important;
+  display:flex!important;
+  align-items:flex-end!important;
+  justify-content:flex-start!important;
+  gap:14px!important;
+  padding:8px 0 51px!important;
+  box-sizing:border-box!important;
+  width:max-content!important;
+  min-width:0!important;
+  height:100%!important;
+  will-change:transform!important;
+}
+.stage-header .lineup-item{
+  flex:0 0 clamp(86px,7vw,108px)!important;
+  width:clamp(86px,7vw,108px)!important;
+  height:100%!important;
+  display:flex!important;
+  align-items:flex-end!important;
+  justify-content:center!important;
+  overflow:visible!important;
+}
+.stage-header .lineup-item .lineup-person-img{
+  display:block!important;
+  width:100%!important;
+  height:156px!important;
+  max-width:100%!important;
+  object-fit:contain!important;
+  object-position:center bottom!important;
+  margin:0!important;
+  transform:none!important;
+  filter:drop-shadow(0 4px 4px rgba(48,34,43,.12))!important;
+}
+/* The two old problem cutouts are no longer part of the JS image list. */
+.stage-header .lineup-person-img[src$="christina-09.png"],
+.stage-header .lineup-person-img[src$="christina-27.png"]{display:none!important}
+
+/* Keep the new version label visible even at narrower widths. */
+footer>p:first-of-type{
+  display:block!important;
+  white-space:nowrap!important;
+}
+
+@media(max-width:900px){
+  .stage-header .lineup-track{gap:12px!important;padding:7px 0 48px!important}
+  .stage-header .lineup-item{flex-basis:90px!important;width:90px!important}
+  .stage-header .lineup-item .lineup-person-img{height:139px!important}
+}
+@media(max-width:600px){
+  .stage-header .lineup-track{gap:10px!important;padding:6px 0 44px!important}
+  .stage-header .lineup-item{flex-basis:76px!important;width:76px!important}
+  .stage-header .lineup-item .lineup-person-img{height:126px!important}
+}
