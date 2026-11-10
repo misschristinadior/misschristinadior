@@ -650,3 +650,30 @@ footer>p:first-of-type{
   .stage-header .lineup-item{flex-basis:76px!important;width:76px!important}
   .stage-header .lineup-item .lineup-person-img{height:126px!important}
 }
+
+
+/* === Christina Dior V1.02 — History year galleries === */
+.history-body{grid-template-columns:1fr!important;gap:16px!important}
+.history-gallery{margin-top:4px;max-width:760px}
+.history-gallery-feature{margin:0}
+.history-feature-button{display:block;width:100%;padding:0;border:0;background:transparent;cursor:zoom-in;border-radius:14px;overflow:hidden;box-shadow:0 8px 24px rgba(55,38,49,.10)}
+.history-feature-button img{display:block;width:100%;height:auto;max-height:500px;object-fit:contain;background:#f7f3f5}
+.history-gallery-feature figcaption{font-size:.72rem;color:#756b72;margin:7px 2px 0;line-height:1.35}
+.history-thumbs{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
+.history-thumb{width:82px;height:58px;padding:0;border:2px solid transparent;background:#f5f1f3;border-radius:8px;overflow:hidden;cursor:pointer;opacity:.78;transition:opacity .15s ease,border-color .15s ease,transform .15s ease}
+.history-thumb:hover{opacity:1;transform:translateY(-1px)}
+.history-thumb.is-active{border-color:#cf3a78;opacity:1}
+.history-thumb img{width:100%;height:100%;display:block;object-fit:cover}
+.history-gallery.single{max-width:620px}
+.history-lightbox{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;background:rgba(15,11,14,.93);padding:56px 72px 72px}
+.history-lightbox.is-open{display:flex}
+.history-lightbox-inner{position:relative;max-width:min(94vw,1600px);max-height:88vh;display:flex;flex-direction:column;align-items:center;gap:10px}
+.history-lightbox img{max-width:100%;max-height:80vh;width:auto;height:auto;object-fit:contain;box-shadow:0 10px 50px rgba(0,0,0,.45)}
+.history-lightbox-caption{color:#fff;font-size:.8rem;line-height:1.35;text-align:center;max-width:900px}
+.history-lightbox-close,.history-lightbox-prev,.history-lightbox-next{position:fixed;border:1px solid rgba(255,255,255,.28);background:rgba(20,16,19,.70);color:#fff;cursor:pointer;border-radius:999px;display:grid;place-items:center;backdrop-filter:blur(6px)}
+.history-lightbox-close{top:16px;right:18px;width:42px;height:42px;font-size:1.55rem}
+.history-lightbox-prev,.history-lightbox-next{top:50%;width:46px;height:46px;margin-top:-23px;font-size:1.45rem}
+.history-lightbox-prev{left:16px}.history-lightbox-next{right:16px}
+.history-lightbox[aria-hidden="true"] .history-lightbox-prev,.history-lightbox[aria-hidden="true"] .history-lightbox-next{display:none}
+body.history-lightbox-open{overflow:hidden}
+@media(max-width:720px){.history-thumb{width:68px;height:48px}.history-lightbox{padding:54px 12px 66px}.history-lightbox-prev,.history-lightbox-next{width:40px;height:40px;font-size:1.2rem;top:auto;bottom:14px}.history-lightbox-prev{left:calc(50% - 52px)}.history-lightbox-next{right:calc(50% - 52px)}.history-feature-button img{max-height:420px}}
