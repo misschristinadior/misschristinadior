@@ -677,3 +677,35 @@ footer>p:first-of-type{
 .history-lightbox[aria-hidden="true"] .history-lightbox-prev,.history-lightbox[aria-hidden="true"] .history-lightbox-next{display:none}
 body.history-lightbox-open{overflow:hidden}
 @media(max-width:720px){.history-thumb{width:68px;height:48px}.history-lightbox{padding:54px 12px 66px}.history-lightbox-prev,.history-lightbox-next{width:40px;height:40px;font-size:1.2rem;top:auto;bottom:14px}.history-lightbox-prev{left:calc(50% - 52px)}.history-lightbox-next{right:calc(50% - 52px)}.history-feature-button img{max-height:420px}}
+
+
+/* === Christina Dior V1.03 — lineup scale correction === */
+.stage-header .lineup-item .lineup-person-img[src$="christina-26.png"],
+.stage-header .lineup-item .lineup-person-img[src$="christina-new-05.png"]{
+  transform:scale(1.15)!important;
+  transform-origin:center bottom!important;
+}
+
+
+/* === Christina Dior V1.05 — lineup movement/visible-size correction ===
+   Render cutouts by height instead of constraining the transparent canvas to
+   the slot width. This keeps wide transparent PNG canvases from looking short. */
+.stage-header .lineup-item .lineup-person-img{
+  width:auto!important;
+  max-width:none!important;
+  height:156px!important;
+}
+.stage-header .lineup-item .lineup-person-img[src$="christina-26.png"]{
+  transform:scale(1.10)!important;
+  transform-origin:center bottom!important;
+}
+.stage-header .lineup-item .lineup-person-img[src$="christina-new-05.png"]{
+  transform:scale(1.04)!important;
+  transform-origin:center bottom!important;
+}
+@media(max-width:900px){
+  .stage-header .lineup-item .lineup-person-img{height:139px!important}
+}
+@media(max-width:600px){
+  .stage-header .lineup-item .lineup-person-img{height:126px!important}
+}

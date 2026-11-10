@@ -1,5 +1,29 @@
 [
   {
+    "year": "2007",
+    "slug": "2007-nz-fashion-week-runway",
+    "caption": "New Zealand Fashion Week — a model wearing the Supré shopping-bag gown designed and constructed by Christina Dior, Auckland, 2007.",
+    "full": "assets/img/history/archive/2007-nz-fashion-week-runway.jpg",
+    "display": "assets/img/history/display/2007-nz-fashion-week-runway.webp",
+    "thumb": "assets/img/history/thumbs/2007-nz-fashion-week-runway.webp"
+  },
+  {
+    "year": "2007",
+    "slug": "2007-nz-fashion-week-backstage",
+    "caption": "New Zealand Fashion Week — backstage at the Supré presentation, Auckland, 2007.",
+    "full": "assets/img/history/archive/2007-nz-fashion-week-backstage.jpg",
+    "display": "assets/img/history/display/2007-nz-fashion-week-backstage.webp",
+    "thumb": "assets/img/history/thumbs/2007-nz-fashion-week-backstage.webp"
+  },
+  {
+    "year": "2007",
+    "slug": "2007-navigaytion",
+    "caption": "NaviGAYtion cruise — onboard drag entertainment, 2007.",
+    "full": "assets/img/history/archive/2007-navigaytion.jpg",
+    "display": "assets/img/history/display/2007-navigaytion.webp",
+    "thumb": "assets/img/history/thumbs/2007-navigaytion.webp"
+  },
+  {
     "year": "2017",
     "slug": "2017-pradas-priscillas-poster",
     "caption": "Prada’s Priscillas — touring production poster.",
@@ -16,9 +40,9 @@
     "thumb": "assets/img/history/thumbs/2008-dragged-to-casino-logo.webp"
   },
   {
-    "year": "2009",
+    "year": "2013",
     "slug": "2009-les-salopes-press",
-    "caption": "Les salopes de la mode — Stonewall production artwork in print.",
+    "caption": "Les salopes de la mode — Stonewall production artwork in print, 2013.",
     "full": "assets/img/history/archive/2009-les-salopes-press.jpg",
     "display": "assets/img/history/display/2009-les-salopes-press.webp",
     "thumb": "assets/img/history/thumbs/2009-les-salopes-press.webp"
@@ -32,9 +56,9 @@
     "thumb": "assets/img/history/thumbs/2012-diva-miss-congeniality-trophy.webp"
   },
   {
-    "year": "2010",
+    "year": "2012",
     "slug": "2010-smash-stonewall",
-    "caption": "SMASH — Stonewall production artwork featuring Christina Dior.",
+    "caption": "SMASH — Stonewall production artwork featuring Christina Dior, 2012.",
     "full": "assets/img/history/archive/2010-smash-stonewall.jpg",
     "display": "assets/img/history/display/2010-smash-stonewall.webp",
     "thumb": "assets/img/history/thumbs/2010-smash-stonewall.webp"
@@ -256,6 +280,14 @@
     "thumb": "assets/img/history/thumbs/2011-queensland-floods-fundraiser.webp"
   },
   {
+    "year": "2011",
+    "slug": "2011-dolly-parton-better-day-commercial",
+    "caption": "Dolly Parton Better Day Australian tour television commercial — Christina Dior with Laydee Kinme, 2011.",
+    "full": "assets/img/history/archive/2011-dolly-parton-better-day-commercial.jpg",
+    "display": "assets/img/history/display/2011-dolly-parton-better-day-commercial.webp",
+    "thumb": "assets/img/history/thumbs/2011-dolly-parton-better-day-commercial.webp"
+  },
+  {
     "year": "2010",
     "slug": "2010-sleazeball-decadence",
     "caption": "Performers at the final Sleaze Ball Decadence party, 2010.",
@@ -302,14 +334,6 @@
     "full": "assets/img/history/archive/2004-connie-and-carla.jpg",
     "display": "assets/img/history/display/2004-connie-and-carla.webp",
     "thumb": "assets/img/history/thumbs/2004-connie-and-carla.webp"
-  },
-  {
-    "year": "2007",
-    "slug": "2007-navigaytion",
-    "caption": "NaviGAYtion cruise — onboard drag entertainment, 2007.",
-    "full": "assets/img/history/archive/2007-navigaytion.jpg",
-    "display": "assets/img/history/display/2007-navigaytion.webp",
-    "thumb": "assets/img/history/thumbs/2007-navigaytion.webp"
   },
   {
     "year": "2009",
@@ -422,5 +446,13 @@
     "full": "assets/img/history/archive/2006-palace-hotel.jpg",
     "display": "assets/img/history/display/2006-palace-hotel.webp",
     "thumb": "assets/img/history/thumbs/2006-palace-hotel.webp"
+  },
+  {
+    "year": "2013",
+    "slug": "2013-delta-riggs-rah-rah-radio",
+    "caption": "Christina Dior in The Delta Riggs’ Rah Rah Radio music video, 2013.",
+    "full": "assets/img/history/archive/2013-delta-riggs-rah-rah-radio.jpg",
+    "display": "assets/img/history/display/2013-delta-riggs-rah-rah-radio.webp",
+    "thumb": "assets/img/history/thumbs/2013-delta-riggs-rah-rah-radio.webp"
   }
 ]

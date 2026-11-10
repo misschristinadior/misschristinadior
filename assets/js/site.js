@@ -17,7 +17,7 @@ function bindSearch(inputId,containerId,itemSel){
 bindSearch('songSearch','songList','.song-item');
 bindSearch('posterSearch','posterGrid','.poster-card');
 
-// V1.01: rolling Christina lineup. Only the visible run plus ~5 upcoming looks
+// V1.03: rolling Christina lineup. Only the visible run plus ~5 upcoming looks
 // receive image src values. Off-screen slots are recycled as they leave the stage.
 const CHRISTINA_LINEUP_IMAGES = [
   "assets/img/lineup/christina-22.png",
@@ -89,28 +89,19 @@ function initRollingLineup(track){
   track.dataset.rollingReady='1';
 
   const stage=track.closest('.stage-curtain') || track.parentElement;
-  const reduceMotion=window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const AHEAD_ITEMS=5;
-  const SPEED_PX_PER_SECOND=27;
+  const BUFFER_ITEMS=1;
+  const SPEED_PX_PER_SECOND=32;
   let nextIndex=0;
   let offset=0;
-  let slotWidth=0;
-  let lastTime=performance.now();
-  let observer=null;
-  let raf=0;
+  let slotWidth=100;
+  let lastTime=null;
 
   const nextUrl=()=>{
     const url=CHRISTINA_LINEUP_IMAGES[nextIndex % CHRISTINA_LINEUP_IMAGES.length];
     nextIndex=(nextIndex+1)%CHRISTINA_LINEUP_IMAGES.length;
     return url;
   };
-
-  function loadImage(img){
-    const src=img.dataset.src;
-    if(src && img.getAttribute('src')!==src){
-      img.src=src;
-    }
-  }
 
   function makeItem(url){
     const item=document.createElement('div');
@@ -120,70 +111,40 @@ function initRollingLineup(track){
     img.alt='';
     img.decoding='async';
     img.fetchPriority='low';
-    img.dataset.src=url;
+    img.src=url;
     item.appendChild(img);
     return item;
-  }
-
-  function observeItem(item){
-    const img=item.querySelector('img');
-    if(!img) return;
-    if(observer){
-      observer.observe(img);
-    }else{
-      loadImage(img);
-    }
   }
 
   function setItemSource(item,url){
     const img=item.querySelector('img');
     if(!img) return;
-    if(observer) observer.unobserve(img);
-    img.removeAttribute('src');
-    img.dataset.src=url;
     img.fetchPriority='low';
-    observeItem(item);
+    img.src=url;
   }
 
   function measureSlot(){
     const first=track.firstElementChild;
-    if(!first) return 110;
-    const gap=parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap || '0')||0;
-    return first.getBoundingClientRect().width + gap;
+    if(!first) return 100;
+    const style=getComputedStyle(track);
+    const gap=parseFloat(style.columnGap || style.gap || '0')||0;
+    return Math.max(1,first.getBoundingClientRect().width + gap);
   }
 
   function desiredPoolSize(){
     const width=stage.getBoundingClientRect().width || window.innerWidth;
-    return Math.max(8,Math.ceil(width/Math.max(slotWidth,1))+AHEAD_ITEMS+1);
+    return Math.max(8,Math.ceil(width/Math.max(slotWidth,1))+AHEAD_ITEMS+BUFFER_ITEMS);
   }
 
   function growPool(){
     const wanted=desiredPoolSize();
     while(track.children.length<wanted){
-      const item=makeItem(nextUrl());
-      track.appendChild(item);
-      observeItem(item);
+      track.appendChild(makeItem(nextUrl()));
     }
   }
 
-  // One fixed-width placeholder is enough to measure the responsive slot before images load.
-  const first=makeItem(nextUrl());
-  track.appendChild(first);
+  track.appendChild(makeItem(nextUrl()));
   slotWidth=measureSlot();
-
-  if('IntersectionObserver' in window){
-    const aheadPx=Math.ceil(slotWidth*AHEAD_ITEMS);
-    observer=new IntersectionObserver(entries=>{
-      entries.forEach(entry=>{
-        if(entry.isIntersecting){
-          loadImage(entry.target);
-          observer.unobserve(entry.target);
-        }
-      });
-    },{root:stage,rootMargin:`0px ${aheadPx}px 0px 0px`,threshold:0.01});
-  }
-
-  observeItem(first);
   growPool();
 
   function recycleOne(){
@@ -194,9 +155,11 @@ function initRollingLineup(track){
   }
 
   function frame(now){
-    const dt=Math.min((now-lastTime)/1000,0.08);
+    if(lastTime===null) lastTime=now;
+    const dt=Math.min((now-lastTime)/1000,0.06);
     lastTime=now;
-    if(!document.hidden && !reduceMotion){
+
+    if(!document.hidden){
       offset+=SPEED_PX_PER_SECOND*dt;
       while(offset>=slotWidth){
         offset-=slotWidth;
@@ -204,7 +167,7 @@ function initRollingLineup(track){
       }
       track.style.transform=`translate3d(${-offset}px,0,0)`;
     }
-    raf=requestAnimationFrame(frame);
+    requestAnimationFrame(frame);
   }
 
   const onResize=()=>{
@@ -216,8 +179,8 @@ function initRollingLineup(track){
   }else{
     window.addEventListener('resize',onResize,{passive:true});
   }
-
-  if(!reduceMotion) raf=requestAnimationFrame(frame);
+  document.addEventListener('visibilitychange',()=>{lastTime=null;},{passive:true});
+  requestAnimationFrame(frame);
 }
 
 document.querySelectorAll('.lineup-track').forEach(initRollingLineup);
